@@ -24,13 +24,15 @@
 
 ### 第 2 步 · 打开本项目的 Notebook 映射链接
 
-把下面链接中的 `<你的GitHub用户名>` 换成本仓库所在的 GitHub 用户名，然后在浏览器打开：
+在浏览器打开下面这个链接（已填好本仓库地址，直接点或复制到浏览器）：
 
 ```
-https://modelscope.cn/notebook/share/github/<你的GitHub用户名>/novel-model-benchmark/blob/main/modelscope_test.ipynb
+https://modelscope.cn/notebook/share/github/florent0921-lgtm/model-deploy/blob/main/modelscope_test.ipynb
 ```
 
 打开后点页面右上角的 **「在 Notebook 中打开」**，ModelScope 会自动把这个 GitHub 仓库的 Notebook 映射成一个云端环境。
+
+> 如果你用的是自己 Fork / 复制的仓库，请把链接中的 `florent0921-lgtm/model-deploy` 换成你自己的 `用户名/仓库名`。
 
 > **打不开映射链接时的备用方法（效果一样）：**
 > 1. 在 ModelScope 网页进入「我的Notebook」→「启动 Notebook」→ 选 GPU 镜像启动；
@@ -125,7 +127,7 @@ GPU 时长（36 小时）用完后可以改用 CPU 实例不限时使用，但�
 ## 🗂 项目结构
 
 ```
-novel-model-benchmark/
+model-deploy/
 ├── modelscope_test.ipynb   # 唯一需要的东西：全部流程都在这个 Notebook 里
 ├── prompts/                # 批量盲评用的测试剧情（可自行替换）
 │   ├── 01_寒潭.txt
