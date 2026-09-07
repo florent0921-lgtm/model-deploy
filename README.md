@@ -1,6 +1,6 @@
 # 📖 model-deploy · 中文小说模型测试（AMD ROCm 主路线）
 
-在 ModelScope **免费 AMD GPU 实例**（192GB 显存 · ROCm）上测试中文小说模型。当前分支（`amd-xuanhuan-bf16`）的第一目标：**玄幻 DPO（JiangLing-js/Qwen3.8-27B-Chinese-Xuanhuan-Novel-Writer-DPO）**，以最接近作者训练条件的方式运行——**BF16 全精度底模 + LoRA，不做量化**，测的是模型本身，不是"模型+4bit"。
+在 ModelScope **免费 AMD GPU 实例**（192GB 显存 · ROCm）上测试中文小说模型。当前分支（`amd-xuanhuan-bf16`）的第一目标：**玄幻 DPO（JiangLing-js/Qwen3.8-27B-Chinese-Xuanhuan-Novel-Writer-DPO）**，以最接近作者训练条件的方式运行——**BF16（未量化）底模 + LoRA**，测的是模型本身，不是"模型+4bit"。
 
 **你不需要懂 Linux、Python、CUDA 或任何部署知识。**
 
@@ -56,7 +56,7 @@ https://modelscope.cn/notebook/share/github/florent0921-lgtm/model-deploy/blob/a
 1. 把示例换成你的剧情（保留 〖〗结构只改内容效果最好；直接粘贴纯骨架也行，程序会自动套结构）；
 2. 点 **【✍️ 开始生成】**，正文逐字显示（约 1~5 分钟，目标 500~1000 字）。
 
-生成参数为作者 held-out 测试原参数：temperature=0.85 / top_p=0.90 / top_k=40 / 重复惩罚=1.05 / 上限 1700 token / 思考模式关闭。
+生成参数为作者 held-out 测试原参数：temperature=0.85 / top_p=0.90 / top_k=40 / 重复惩罚=1.05 / 上限 1700 token / 思考模式关闭。程序还会自动检查 Prompt 长度：超过 2800 tokens（作者训练分布的提示词上限）会拦截并提示缩短，不会自动截断你的剧情。
 
 ### 第 6 步 · 查看与保存结果
 
@@ -108,7 +108,7 @@ BF16 底模 55.6GB + LoRA + 缓存余量，建议 `/mnt/workspace` 剩余 ≥70G
 | `amd-xuanhuan-bf16` | **当前主推**：AMD ROCm 192GB + BF16 + LoRA + Smoke Test（本 README） |
 | `main` | 历史方案：NVIDIA A10 24GB（WebNovel GGUF + Xuanhuan 4bit + OOM 预案）——AMD 版验证通过后 main 将更新 |
 
-A10 历史路线仍可使用：在 NVIDIA A10 实例上打开 main 分支的 Notebook 即可（模型① llama.cpp 跑通，模型② 4bit 属尝试性支持）。
+A10 历史路线为**设计方案，尚未在本轮测试中实际 GPU 验证**（本机无 NVIDIA 显卡，未真实跑通）：在 NVIDIA A10 实例上打开 main 分支的 Notebook 即可尝试（模型① llama.cpp 路线，模型② 4bit 属尝试性支持设计）。
 
 ## 📜 许可与用途（重要）
 
