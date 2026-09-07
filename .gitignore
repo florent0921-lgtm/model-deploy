@@ -1,0 +1,9 @@
+# 生成结果（保存在云端 /mnt/workspace，不属于仓库）
+results/
+# 模型与缓存
+*.gguf
+hf-cache/
+models/
+# Python / Jupyter 杂项
+__pycache__/
+.ipynb_checkpoints/
